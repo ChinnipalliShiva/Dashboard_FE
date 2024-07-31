@@ -56,7 +56,7 @@ const Customers = () => {
         mt="1rem"
         height="75vh"
         sx={{
-          "&.MuiDataGrid-root": {
+          "& .MuiDataGrid-root": {
             border: "none",
           },
           "& .MuiDataGrid-cell": {

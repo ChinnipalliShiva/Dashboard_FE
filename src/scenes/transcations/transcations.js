@@ -1,16 +1,20 @@
-import { useTheme } from "@emotion/react";
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import DataGridCustomToolBar from "components/DataGridCustomToolBar.js";
 import Header from "components/Header";
 import React, { useState } from "react";
 import { useGetTranscationsQuery } from "state/api";
 
 const Transcations = () => {
+  const theme = useTheme();
+
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
-  const theme = useTheme();
+
+  const [searchInput, setSearchInput] = useState("");
+
   const { data, isLoading } = useGetTranscationsQuery({
     page,
     pageSize,
@@ -53,9 +57,9 @@ const Transcations = () => {
     <Box m="1.5rem 2.5rem">
       <Header title="Transactions" subtitle="Entire list of transactions" />
       <Box
-        height="80vh"
+        height="77vh"
         sx={{
-          "&.MuiDataGrid-root": {
+          "& .MuiDataGrid-root": {
             border: "none",
           },
           "& .MuiDataGrid-cell": {
@@ -80,11 +84,12 @@ const Transcations = () => {
         }}
       >
         <DataGrid
-          loading={isLoading}
+          loading={isLoading || !data?.data}
           getRowId={(row) => row._id}
-          rows={data?.data || {}}
+          rows={data?.data || []}
           columns={columns}
           rowCount={data?.total || 0}
+          pageSizeOptions={[5,20,50,100]}
           pagination
           page={page}
           pageSize={pageSize}
@@ -92,6 +97,11 @@ const Transcations = () => {
           sortingMode="server"
           onPageChange={(newPage) => setPage(newPage)}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+          onSortModelChange={(newSortModel) => setSort(...newSortModel)}
+          slots={{ toolbar: DataGridCustomToolBar }}
+          slotProps={{
+            toolbar: { searchInput, setSearchInput, setSearch },
+          }}
         />
       </Box>
     </Box>
