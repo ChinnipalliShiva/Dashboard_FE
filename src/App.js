@@ -10,6 +10,12 @@ import Products from "scenes/products/products";
 import Customers from "scenes/customers/customers";
 import Transcations from "scenes/transcations/transcations";
 import Geography from "scenes/geography/Geography";
+import Overview from "scenes/overview/overview";
+import DailyOverview from "scenes/dailyOverview/DailyOverview";
+import MonthlyStats from "scenes/monthlyStats/monthlyStats";
+import BreakDown from "scenes/breakdown/breakdown";
+import Admin from "scenes/admin/admin";
+import Performance from "scenes/performance/performance";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -31,6 +37,12 @@ function App() {
               <Route path="/customers" element={<Customers />} />
               <Route path="/transactions" element={<Transcations />} />
               <Route path="/geography" element={<Geography />} />
+              <Route path="/overview" element={<Overview />} />
+              <Route path="/daily" element={<DailyOverview />} />
+              <Route path="/monthly" element={<MonthlyStats />} />
+              <Route path="/breakdown" element={<BreakDown />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/performance" element={<Performance />} />
             </Route>
           </Routes>
         </ThemeProvider>
