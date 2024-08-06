@@ -12,7 +12,7 @@ const Transcations = () => {
   const [pageSize, setPageSize] = useState(20);
   const [sort, setSort] = useState({});
   const [search, setSearch] = useState("");
-
+  console.log("page info", page, pageSize);
   const [searchInput, setSearchInput] = useState("");
 
   const { data, isLoading } = useGetTranscationsQuery({
@@ -89,7 +89,7 @@ const Transcations = () => {
           rows={data?.data || []}
           columns={columns}
           rowCount={data?.total || 0}
-          pageSizeOptions={[5,20,50,100]}
+          pageSizeOptions={[5, 20, 50, 100]}
           pagination
           page={page}
           pageSize={pageSize}

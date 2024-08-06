@@ -87,6 +87,7 @@ const OverViewChart = ({ isDashboard = false, view }) => {
       }}
       yFormat=" >-.2f"
       curve="catmullRom"
+      enableArea={isDashboard}
       axisTop={null}
       axisRight={null}
       axisBottom={{
@@ -105,6 +106,7 @@ const OverViewChart = ({ isDashboard = false, view }) => {
       axisLeft={{
         orient: "left",
         tickSize: 5,
+        tickValues: 5,
         tickPadding: 5,
         tickRotation: 0,
         legend: isDashboard

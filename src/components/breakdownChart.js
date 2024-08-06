@@ -94,8 +94,8 @@ const BreakdownChart = ({ isDashboard = false }) => {
         }}
         legends={[
           {
-            anchor: "side",
-            direction: "column",
+            anchor: "bottom",
+            direction: "row",
             justify: false,
             translateX: isDashboard ? 20 : 0,
             translateY: isDashboard ? 50 : 56,
